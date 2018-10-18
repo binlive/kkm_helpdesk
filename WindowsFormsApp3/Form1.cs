@@ -141,17 +141,18 @@ namespace WindowsFormsApp3
                 // Configure the process using the StartInfo properties.
                 process.StartInfo.FileName = "c:\\helpdesk\\psexec.exe";
                 process.StartInfo.Arguments = "-s \\\\" + textBox1.Text + " c:\\install\\installer.exe";          
-            //     process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                 process.Start();
                 process.WaitForExit();
-               if (process.ExitCode = null)
+               if (process.ExitCode == 0)
                {
-                     textBox2.Text = "Установлено!";
+                     textBox2.Text = "Служба установлена успешно!";
                }    
                else
                {
-                     textBox2.Text = "Ошибка!";
-               }
+                     textBox2.Text = "Ошибка при установке!";
+                     return;
+            }
 
         }
 
